@@ -73,10 +73,24 @@ WSGI_APPLICATION = 'ecoFerremas.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
+# SQLite3 Database
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
+# PostgreSQL Database
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'eco_ferremas_db',
+        'USER': 'admin',
+        'PASSWORD': 'SVCzemQLeYyJgHZCm4Me53XtieTYQkiw',
+        'HOST': 'dpg-cpjhv0g21fec739u6rlg-a.oregon-postgres.render.com',
+        'PORT': '5432',
     }
 }
 
