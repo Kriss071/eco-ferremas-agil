@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from .models import *
 
 # Create your views here.
 
@@ -6,4 +7,10 @@ def index(request):
     return render(request, 'index.html')
 
 def catalogue(request):
-    return render(request, 'catalogue.html')
+    products = Product.objects.all()
+    
+    context = {
+        'products': products
+    }
+    
+    return render(request, 'catalogue.html', context)

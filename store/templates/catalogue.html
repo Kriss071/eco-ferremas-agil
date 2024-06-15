@@ -9,12 +9,11 @@
     <div class="products-cont">
         {% for p in products %}
         <div class="product-card">
-            <img src="{% static 'img/no_img.jpg' %}" alt="">
+            <img src="{{ p.image.url }}" alt="">
             <hr>
             <h2>{{ p.name }}</h2>
-            <p class="price">{{ p.priceUSD }}</p>
+            <p class="price">{{ p.price }}</p>
             <div class="product-buttons-cont">
-                <a href="{% url 'carrito:agregar_carrito' id_product=p.id %}"><button>Comprar</button></a>
             </div>
         </div>
         {% endfor %}
@@ -23,6 +22,6 @@
 {{ error }}
 {% endif %}
 
-
-
 {% endblock %}
+
+<!-- <a href="{% url 'carrito:agregar_carrito' id_product=p.id %}"><button>Comprar</button></a> -->
