@@ -5,6 +5,10 @@
     text-decoration: none;
 }
 
+main{
+    margin: 25px;
+}
+
 /* === Navegador === */
 
 nav {
@@ -144,4 +148,69 @@ nav li a:hover {
 
 #cart-btn:hover {
     background-color: rgb(200, 200, 69);
+}
+
+/* === Carrito === */
+
+.table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 12px solid #337AB7;
+    border-radius: 10px;
+}
+
+.total {
+    width: 25%;
+}
+
+.table th,
+.table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table_total-cont{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-group {
+    display: flex;
+}
+
+.btn-group .btn {
+    flex: 1;
+    margin-right: 5px;
+}
+
+.btn {
+    display: inline-block;
+    padding: 6px 12px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    background-color: #337ab7;
+    color: #fff;
+    border-color: #2e6da4;
+}
+
+.btn:hover {
+    background-color: #286090;
+    border-color: #204d74;
+}
+
+.price {
+    font-weight: bold;
 }

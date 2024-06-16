@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Carrito{% endblock %}
+
+{% block content %}
+{{status}}
+
+{% if cart.cart %}
+<h1>Carrito de Compra</h1>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Producto</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total</th>
+                <th>Acciones</th> <!-- Agregamos una columna para los botones -->
+            </tr>
+        </thead>
+        <tbody>
+            {% for item_id, item_info in cart.cart.items %}
+            <tr>
+                <td>{{ item_info.name }}</td>
+                <td class="price">{{ item_info.price }}</td>
+                <td>{{ item_info.quantity }}</td>
+                <td class="price">{{ item_info.total_price }}</td>
+                <td>
+                    <div class="btn-group" role="group" aria-label="Acciones">
+                        <a href="{% url 'add_cart' id_product=item_id %}" class="btn btn-primary">+</a>
+                        <a href="{% url 'remove' id_product=item_id %}" class="btn btn-primary">-</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div class="table_total-cont">
+        <table class="table total">
+            <thead>
+                <tr>
+                    <th>Neto</th>
+                    <th>Iva</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="price">{{ neto }}</td>
+                    <td class="price">{{ ivaTotal }}</td>
+                    <td class="price">{{ total }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+    
+{% else %}
+    <p>El carrito está vacío.</p>
+{% endif %}
+
+
+
+{% endblock %}

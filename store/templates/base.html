@@ -16,14 +16,17 @@
             <ul>
                 <li><a href="{% url 'index' %}"">Inicio</a></li>
                 <li><a href="{% url 'catalogue' %}">Catalogo</a></li>
-                <li><a href='#'>Nosotros</a></li>                
+                <li><a href='#'>Nosotros</a></li>  
+                <li><a href="{% url 'cart' %}"">Carrito</a></li>  
             </ul>
         </nav>
     </header>
 
-    {% block content %}
-    {% endblock %}
-
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    
     <footer>
     </footer>
 

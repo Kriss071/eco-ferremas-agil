@@ -14,6 +14,7 @@
             <h2>{{ p.name }}</h2>
             <p class="price">{{ p.price }}</p>
             <div class="product-buttons-cont">
+                <a href="{% url 'add_cart' id_product=p.id %}"><button>Agregar al Carrito</button></a>
             </div>
         </div>
         {% endfor %}
