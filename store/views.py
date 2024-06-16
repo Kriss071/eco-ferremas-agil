@@ -8,10 +8,17 @@ def index(request):
     return render(request, 'index.html')
 
 def catalogue(request):
+    category = request.GET.get('category', 0)
     products = Product.objects.all()
+    categories = Category.objects.all()
     
+    if category:
+        products = products.filter(id_category=category)
+        
     context = {
-        'products': products
+        'products': products,
+        'categories': categories,
+        'categoria_id': category
     }
     
     return render(request, 'catalogue.html', context)

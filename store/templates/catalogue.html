@@ -4,8 +4,21 @@
 
 {% block content %}
 
-{% if products %}
 <h1>Catalogo</h1>
+
+
+<div class="main-catalogo-cont">
+    <div class="categories-cont">
+        <h2>Categorias</h2>
+        <ul>
+            {% for c in categories %}
+            <li><a href="{% url 'catalogue'%}?query={{ query }}&category={{c.id}}" class="{% if c.id|stringformat:'s' == categoria_id %}selected{% endif %}">{{ c.name }}</a></li>
+            {% endfor %}
+            <li><a href="{% url 'catalogue' %}">Limpiar Filtros</a></li>
+
+        </ul>
+    </div>
+    {% if products %}
     <div class="products-cont">
         {% for p in products %}
         <div class="product-card">
@@ -19,9 +32,16 @@
         </div>
         {% endfor %}
     </div>
-{% else %}
-{{ error }}
-{% endif %}
+    {% else %}
+        <div class="products-cont">
+            <div class="product-card">
+                <h3>No hay productos</h3>
+            </div>
+        </div>
+    {% endif %}
+</div>
+
+    
 
 {% endblock %}
 
