@@ -22,8 +22,9 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('store/', include('store.urls')),
     path('', RedirectView.as_view(url='store/', permanent=True)),
+    path('store/', include('store.urls')),
+    path('accounts/', include('allauth.urls')),
 ]
 
 if settings.DEBUG:

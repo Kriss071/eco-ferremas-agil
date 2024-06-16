@@ -4,4 +4,12 @@
 
 {% block content %}
 <h1>Inicio</h1>
+
+<a href="{% url 'account_signup' %}"><button>REGISTRO</button></a>
+<a href="{% url 'account_login' %}"><button>LOGIN</button></a>
+<a href="{% url 'account_logout' %}"><button>logout</button></a>
+
+
+
+<h1>Bienvenido, {{ user.username }}</h1>
 {% endblock %}

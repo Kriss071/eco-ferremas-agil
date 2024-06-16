@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Iniciar Sesión{% endblock %}
+{% load static %}
+
+
+{% block app_styles %}
+<link rel="stylesheet" href="{% static 'css/styles_auth.css' %}">
+{% endblock %}
+
+{% block content %}
+    
+    <form class="signup" method="post" action="{% url 'account_login'%}">
+        <h1>Iniciar Sesión</h1>
+        <p>Si aún no has creado una cuenta, por favor <a href="{{signup_url}}">registrate</a> primero.</p>
+        {% csrf_token %}
+        {{form.as_ul}}
+        <button type="submit">Iniciar Sesión</button>
+    </form>
+    
+{% endblock content %}
