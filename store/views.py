@@ -23,6 +23,7 @@ def catalogue(request):
     
     return render(request, 'catalogue.html', context)
 
+# === Cart ===
 def cart(request):
     return render(request, 'cart/cart.html')
 
@@ -49,6 +50,5 @@ def clear_cart(request):
     cart.clear()
     return redirect('cart')
 
-    
 def error(request, context):
     return render(request, 'error.html', context)

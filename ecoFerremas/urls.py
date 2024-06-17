@@ -25,6 +25,7 @@ urlpatterns = [
     path('', RedirectView.as_view(url='store/', permanent=True)),
     path('store/', include('store.urls')),
     path('accounts/', include('allauth.urls')),
+    path('user/', include('authentication.urls'))
 ]
 
 if settings.DEBUG:

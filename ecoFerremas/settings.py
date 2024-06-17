@@ -140,6 +140,7 @@ ACCOUNT_EMAIL_VERIFICATION = "mandatory"
 ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/'
 LOGIN_REDIRECT_URL = '/accounts/email/'
 ACCOUNT_SIGNUP_REDIRECT_URL = '/'
+LOGIN_REDIRECT_URL = '/'
 
 # EMAIL ALLAUTH
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'

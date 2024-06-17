@@ -18,19 +18,19 @@ nav {
 }
 
 nav ul {
+    position: relative;
     width: 100%;
     text-align: end;
 }
 
 nav li {
     display: inline-block;
-    position: relative;
 }
 
 nav a {
     display: block;
     line-height: 64px;
-    padding: 0 14px;
+    padding: 0 25px;
     text-decoration: none;
     color: #FFFFFF;
     font-size: 20px;

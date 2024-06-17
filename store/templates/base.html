@@ -8,6 +8,7 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{% static 'css/styles_store.css' %}">
     {% block app_styles %}{% endblock %}
+    
 </head>
 
 <body>
@@ -15,10 +16,21 @@
         <nav>
             <img src="{% static 'img/logo.png' %}" alt="logo.png">
             <ul>
-                <li><a href="{% url 'index' %}"">Inicio</a></li>
+                <li><a href="{% url 'index' %}">Inicio</a></li>
                 <li><a href="{% url 'catalogue' %}">Catalogo</a></li>
                 <li><a href='#'>Nosotros</a></li>  
-                <li><a href="{% url 'cart' %}"">Carrito</a></li>  
+                <li><a href="{% url 'cart' %}">Carrito</a></li>
+                <li>
+                    {% if user.is_authenticated %}    
+                        <li><a href="{% url 'profile' %}"><i class="fa-solid fa-user"></i></a></li>
+                        <li><a href="{% url 'account_logout'%}">Salir <i class="fa-solid   fa-arrow-right-from-bracket"></i></a></li>
+                    {% else %}
+                        <li><a href="{% url 'account_login' %}">Login</a></li>
+                        <li><a href="{% url 'account_signup' %}">Sign in</a></li>
+                    {% endif %}
+                    </ul>    
+                </li>
+                
             </ul>
         </nav>
     </header>
@@ -32,6 +44,8 @@
     </footer>
 
     <script src="{% static 'js/functions.js' %}"></script>
+    <script src="https://kit.fontawesome.com/61e189dcda.js" crossorigin="anonymous"></script>
+
 
 </body>
 

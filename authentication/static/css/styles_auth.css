@@ -1,4 +1,9 @@
-/* Formulario de Registro */
+main{
+    display: flex;
+    margin: 50px;
+}
+
+/* === Formulario de Registro === */
 
 .signup{
     width: 35%;
@@ -36,4 +41,58 @@
     border-radius: 10px;
     padding: 10px;
     margin-bottom: 10px;
+}
+
+/* === Profile === */
+
+.profile-nav{
+    width: 20%;
+    background-color: #242E42;
+    color: #DDE9F8;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    padding: 20px;
+}
+
+.profile-nav ul{
+    margin-top: 10px;
+}
+
+.profile-nav ul li a{
+    color: #DDE9F8;
+}
+
+.profile-nav ul li:hover{
+    a{
+        color: #88beff;
+    }
+}
+
+
+.profile-nav ul li i{
+    margin-right: 10px;
+}
+
+
+.profile-main{
+    width: 80%;
+    background-color: #F0F1F6;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+    padding: 20px;
+}
+
+.profile_edit-form{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+}
+
+.profile_edit-form li{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile_edit-form li input{
+    padding: 5px;
 }

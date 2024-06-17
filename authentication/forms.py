@@ -34,3 +34,14 @@ class CustomLoginForm(LoginForm):
         self.fields['password'].widget.attrs['placeholder'] = 'Ingresa tu contraseña'
         self.fields['remember'].widget.attrs['class'] = 'checkbox__recuerdame'
         self.fields['login'].label = "Usuario"
+
+class EditProfileForm(forms.ModelForm):
+    class Meta:
+        model = get_user_model()
+        fields = ['first_name', 'last_name', 'username', 'email']
+
+        labels = {
+            'first_name': 'Nombre',
+            'last_name': 'Apellido',
+            'email': 'Correo electrónico'
+        }

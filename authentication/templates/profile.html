@@ -1,0 +1,14 @@
+{% extends 'base-profile.html' %}
+{% block title %}Perfil de Usuario{% endblock %}
+
+{% block profile %}
+    <div class="profile-main">
+        <h2>Bienvenido {{ user.first_name }}</h2>
+
+        <form class="profile_edit-form" method="POST">
+            {% csrf_token %}
+            {{ form.as_ul }}
+            <button type="submit">Guardar Cambios</button>
+        </form>
+    </div>
+{% endblock %}
