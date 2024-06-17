@@ -1,5 +1,6 @@
 from django import forms
 from allauth.account.forms import *
+from store import models
 
 class CustomSignupForm(SignupForm):
     first_name = forms.CharField(max_length=30, label='Nombre', required=True)
@@ -45,3 +46,9 @@ class EditProfileForm(forms.ModelForm):
             'last_name': 'Apellido',
             'email': 'Correo electrónico'
         }
+        
+        
+class CategoriesForm(forms.ModelForm):
+    class Meta:
+        model = models.Category
+        fields = ['name']

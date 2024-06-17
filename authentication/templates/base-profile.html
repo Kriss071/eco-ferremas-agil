@@ -13,7 +13,9 @@
         <ul>
             <li><i class="fa-solid fa-user"></i><a href="{% url 'profile' %}">Datos de Usuario</a></li>
             {% if user.is_superuser %}
-            <h1>sdfknsldj</h1>
+            <br>
+            <h2>Administrador</h2>
+            <li><i class="fa-solid fa-list"></i><a href="{% url 'profile_categories' %}">Categorías</a></li>
             {% endif %}
         </ul>
         

@@ -1,0 +1,26 @@
+{% extends 'base-profile.html' %}
+{% block title %}Perfil de Usuario{% endblock %}
+
+{% block profile %}
+    <div class="profile-main">
+        <h2>Categorias Disponibles</h2>
+
+        <ul>
+        {% for c in categories %}
+            <div style="display: flex;">
+                <li>{{ c.name }}</li>
+                <a href="{% url 'profile_delete_category' id_category=c.id %}">Eliminar</a>
+            </div>
+        {% endfor %}
+        </ul>
+
+        <div>
+            <h3>Agregar Categorias</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_ul }}
+                <button type="submit">Agregar Categoria</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}
