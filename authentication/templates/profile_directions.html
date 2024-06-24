@@ -13,6 +13,8 @@
                 <li><span>Numero:</span> {{ d.numero }}</li>
                 <li><span>Codigo </span>Postal: {{ d.codigo_postal }}</li>
                 <li><span>Comentario:</span> {{ d.comentario }}</li>
+                <a href="{% url 'delete_direction' id_direction=d.id %}"><button>Eliminar Direccion</button></a>
+
             </div>
         {% endfor %}
         </ul>

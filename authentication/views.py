@@ -66,7 +66,6 @@ def profile_product(request):
     return render(request, 'profile_product.html', context)
 
 def profile_directions(request):
-    
     if request.method == 'POST':
         form = DirectionForm(request.POST)
         if form.is_valid():
@@ -85,3 +84,8 @@ def profile_directions(request):
         }
     
     return render(request, 'profile_directions.html', context)
+
+def delete_directions(request, id_direction):
+    direction = get_object_or_404(Directions, pk=id_direction)
+    direction.delete()
+    return redirect(profile_directions)
