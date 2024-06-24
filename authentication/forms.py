@@ -52,3 +52,8 @@ class CategoriesForm(forms.ModelForm):
     class Meta:
         model = models.Category
         fields = ['name']
+        
+class ProductForm(forms.ModelForm): 
+    class Meta:
+        model = models.Product
+        fields = ['name', 'id_category', 'description', 'brand', 'image', 'price', 'code']

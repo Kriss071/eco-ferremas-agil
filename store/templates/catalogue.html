@@ -22,7 +22,12 @@
     <div class="products-cont">
         {% for p in products %}
         <div class="product-card">
-            <img src="{{ p.image.url }}" alt="">
+            {% if p.image %}
+                <img src="{{ p.image.url }}" alt="">
+
+            {% else %}
+                <img src="{% static 'img/no_disponible.jpg' %}" alt="">
+            {% endif %}
             <hr>
             <h2>{{ p.name }}</h2>
             <p class="price">{{ p.price }}</p>

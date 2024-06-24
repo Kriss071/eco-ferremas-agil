@@ -1,0 +1,15 @@
+{% extends 'base-profile.html' %}
+{% block title %}Productos{% endblock %}
+
+{% block profile %}
+    <div class="profile-main">
+        <h2>Agregar Productos</h2>
+        <div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form.as_ul }}
+                <button type="submit">Agregar Producto</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

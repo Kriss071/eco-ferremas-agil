@@ -42,7 +42,24 @@ def profile_category(request):
     
     return render(request, 'profile_categories.html', context)
 
+@staff_member_required
 def delete_category(request, id_category):
     category = get_object_or_404(models.Category, pk=id_category)
     category.delete()
     return redirect(profile_category)
+
+@staff_member_required
+def profile_product(request):
+    if request.method == 'POST':
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            return redirect(profile_product)
+    else:
+        form = ProductForm()
+        
+        context = {
+            'form': form
+        }
+        
+    return render(request, 'profile_product.html', context)
