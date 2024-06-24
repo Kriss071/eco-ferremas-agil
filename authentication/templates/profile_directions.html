@@ -1,0 +1,29 @@
+{% extends 'base-profile.html' %}
+{% block title %}Categorias{% endblock %}
+
+{% block profile %}
+    <div class="profile-main">
+        <h2>Direcciones</h2>
+        <ul style="display: flex;">
+        {% for d in directions %}
+            <div class="direction-card">
+                <li><span>Nombre:</span> {{ d.nombre }}</li>
+                <li><span>Comuna:</span> {{ d.comuna }}</li>
+                <li><span>Calle:</span> {{ d.calle }}</li>
+                <li><span>Numero:</span> {{ d.numero }}</li>
+                <li><span>Codigo </span>Postal: {{ d.codigo_postal }}</li>
+                <li><span>Comentario:</span> {{ d.comentario }}</li>
+            </div>
+        {% endfor %}
+        </ul>
+
+        <div>
+            <h3>Agregar Direccion</h3>
+            <form method="POST">
+                {% csrf_token %}
+                {{ form.as_ul }}
+                <button type="submit">Agregar Direccion</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

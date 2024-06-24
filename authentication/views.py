@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.admin.views.decorators import staff_member_required
 from .forms import *
 from store import models
+from .models import *
 
 
 
@@ -63,3 +64,24 @@ def profile_product(request):
         }
         
     return render(request, 'profile_product.html', context)
+
+def profile_directions(request):
+    
+    if request.method == 'POST':
+        form = DirectionForm(request.POST)
+        if form.is_valid():
+            direction = form.save(commit=False)  
+            direction.id_usuario = request.user  
+            direction.save() 
+            return redirect(profile_directions)
+    else:
+        form = DirectionForm()    
+        
+        directions = Directions.objects.all()
+        
+        context = {
+            'directions': directions,
+            'form': form
+        }
+    
+    return render(request, 'profile_directions.html', context)
