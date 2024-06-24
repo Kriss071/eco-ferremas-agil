@@ -181,3 +181,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+FLOW_KEY_SANDBOX = '79B1625F-8D2C-493A-96B5-8B934FD1L5FA'
+FLOW_SECRET_SANDBOX = '9615ae5ca3b73998b994653d290447f3fdc8da74'

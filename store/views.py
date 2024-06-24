@@ -1,6 +1,8 @@
 from django.shortcuts import render, redirect
 from .models import *
 from .cart import *
+from .forms import *
+from .flow_utils import *
 
 # Create your views here.
 
@@ -50,5 +52,46 @@ def clear_cart(request):
     cart.clear()
     return redirect('cart')
 
+def comfirm_purchase(request):
+    cart = Cart(request)
+    
+    if not cart.cart:
+        context = {
+            'No se pudo obtener el carrito'
+        }
+        return redirect(error, context)
+    
+    if request.method == 'POST':
+        form = ComfirmPurchaseForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            total = cart.total()
+            data['total_price'] = total
+            
+            response = create_payment(request, data['name'], total, data['email'])
+
+            url = response['url']
+            token = response['token']
+            payment_url = f"{url}?token={token}"
+            
+            cart.clear() 
+            return redirect(payment_url)
+            
+                
+    else:
+        form = ComfirmPurchaseForm()
+        
+        context = {
+            'form': form
+        }
+        
+        return render(request, 'cart/confirm_purchase.html', context)
+    
+def retorno_flow(request):
+    return redirect(index)
+
+def confirmacion_flow(request):
+    return redirect(catalogue)
+    
 def error(request, context):
     return render(request, 'error.html', context)
