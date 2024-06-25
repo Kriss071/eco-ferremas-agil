@@ -61,31 +61,55 @@ def comfirm_purchase(request):
         }
         return redirect(error, context)
     
-    if request.method == 'POST':
-        form = ComfirmPurchaseForm(request.POST)
-        if form.is_valid():
-            data = form.cleaned_data
-            total = cart.total()
-            data['total_price'] = total
-            
-            response = create_payment(request, data['name'], total, data['email'])
-
-            url = response['url']
-            token = response['token']
-            payment_url = f"{url}?token={token}"
-            
-            cart.clear() 
-            return redirect(payment_url)
-            
+    if User.is_authenticated:
+        if request.method == 'POST':
+            form = PedidoForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                total = cart.total()
+                data['total_price'] = total
+                print(data)
+                response = create_payment(request, data['phone'], total, request.user.email)
+                url = response['url']
+                token = response['token']
+                payment_url = f"{url}?token={token}"
                 
+                cart.clear() 
+                return redirect(payment_url)
+        else:
+            form = PedidoForm()
+            
+            context = {
+                'form': form
+            }
+            
+            return render(request, 'cart/confirm_purchase.html', context)
     else:
-        form = ComfirmPurchaseForm()
-        
-        context = {
-            'form': form
-        }
-        
-        return render(request, 'cart/confirm_purchase.html', context)
+        if request.method == 'POST':
+            form = ComfirmPurchaseForm(request.POST)
+            if form.is_valid():
+                data = form.cleaned_data
+                total = cart.total()
+                data['total_price'] = total
+                
+                response = create_payment(request, data['name'], total, data['email'])
+
+                url = response['url']
+                token = response['token']
+                payment_url = f"{url}?token={token}"
+                
+                cart.clear() 
+                return redirect(payment_url)
+                
+                    
+        else:
+            form = ComfirmPurchaseForm()
+            
+            context = {
+                'form': form
+            }
+            
+            return render(request, 'cart/confirm_purchase.html', context)
     
 def retorno_flow(request):
     return redirect(index)

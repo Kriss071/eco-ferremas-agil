@@ -7,6 +7,7 @@
     <h1>Confirmar Compra</h1>
     <form method="post" action="{% url 'comfirm_purchase' %}">
         {% csrf_token %}
+        {% if User.is_authenticated %}
         <div class="form-group">
             <label for="{{ form.name.id_for_label }}">Nombre:</label>
             {{ form.name }}
@@ -35,6 +36,9 @@
             <label for="{{ form.email.id_for_label }}">Correo Electrónico:</label>
             {{ form.email }}
         </div>
+        {% else %}
+        {{ form.as_ul }}
+        {% endif %}
         <button type="submit" class="btn btn-primary">Confirmar Compra</button>
     </form>
 {% endblock %}
